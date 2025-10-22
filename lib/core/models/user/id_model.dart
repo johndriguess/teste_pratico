@@ -4,7 +4,7 @@ part 'id_model.g.dart';
 @JsonSerializable()
 class IdModel {
   final String name;
-  final String value;
+  final String? value;
 
   IdModel({
     required this.name, 
@@ -14,3 +14,4 @@ class IdModel {
   factory IdModel.fromJson(Map<String, dynamic> json) => _$IdModelFromJson(json);
   Map<String, dynamic> toJson() => _$IdModelToJson(this);
 }
+
