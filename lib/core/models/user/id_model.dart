@@ -1,3 +1,7 @@
+import '../../core.dart';
+part 'id_model.g.dart';
+
+@JsonSerializable()
 class IdModel {
   final String name;
   final String value;
@@ -7,10 +11,6 @@ class IdModel {
     required this.value, 
   });
 
-  factory IdModel.fromJson(Map<String, dynamic> json) {
-    return IdModel(
-      name: json['name'],
-      value: json['value']
-    );
-  }
+  factory IdModel.fromJson(Map<String, dynamic> json) => _$IdModelFromJson(json);
+  Map<String, dynamic> toJson() => _$IdModelToJson(this);
 }

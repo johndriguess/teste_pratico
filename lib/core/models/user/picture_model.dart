@@ -1,3 +1,7 @@
+import '../../core.dart';
+part 'picture_model.g.dart';
+
+@JsonSerializable()
 class PictureModel {
   final String large;
   final String medium;
@@ -9,11 +13,6 @@ class PictureModel {
     required this.thumbnail
   });
 
-  factory PictureModel.fromJson(Map<String, dynamic> json) {
-    return PictureModel(
-      large: json['large'],
-      medium: json['medium'],
-      thumbnail: json['thumbnail']
-    );
-  }
+  factory PictureModel.fromJson(Map<String, dynamic> json) => _$PictureModelFromJson(json);
+  Map<String, dynamic> toJson() => _$PictureModelToJson(this);
 }

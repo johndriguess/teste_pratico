@@ -1,3 +1,7 @@
+import '../../core.dart';
+part 'dob_model.g.dart';
+
+@JsonSerializable()
 class DobModel {
   final String date;
   final int age;
@@ -7,10 +11,6 @@ class DobModel {
     required this.age, 
   });
 
-  factory DobModel.fromJson(Map<String, dynamic> json) {
-    return DobModel(
-      date: json['date'],
-      age: json['age']
-    );
-  }
+  factory DobModel.fromJson(Map<String, dynamic> json) => _$DobModelFromJson(json);
+  Map<String, dynamic> toJson() => _$DobModelToJson(this);
 }

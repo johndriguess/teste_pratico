@@ -8,3 +8,4 @@ export '../app_module.dart';
 
 export 'package:flutter/material.dart';
 export 'package:flutter_modular/flutter_modular.dart';
+export 'package:json_annotation/json_annotation.dart';

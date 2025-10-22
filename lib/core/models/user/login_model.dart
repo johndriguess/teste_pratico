@@ -1,3 +1,7 @@
+import '../../core.dart';
+part 'login_model.g.dart';
+
+@JsonSerializable()
 class LoginModel {
   final String uuid;
   final String username;
@@ -17,15 +21,6 @@ class LoginModel {
     required this.sha256, 
   });
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) {
-    return LoginModel(
-      uuid: json['name'],
-      username: json['value'],
-      password: json['password'],
-      salt: json['salt'],
-      md5: json['md5'],
-      sha1: json['sha1'],
-      sha256: json['sha256']
-    );
-  }
+  factory LoginModel.fromJson(Map<String, dynamic> json) => _$LoginModelFromJson(json);
+  Map<String, dynamic> toJson() => _$LoginModelToJson(this);
 }

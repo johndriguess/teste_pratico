@@ -1,3 +1,7 @@
+import '../../core.dart';
+part 'name_model.g.dart';
+
+@JsonSerializable()
 class NameModel {
   final String title;
   final String first;
@@ -5,11 +9,6 @@ class NameModel {
 
   NameModel({required this.title, required this.first, required this.last});
 
-  factory NameModel.fromJson(Map<String, dynamic> json) {
-    return NameModel(
-      title: json['title'],
-      first: json['first'],
-      last: json['last'],
-    );
-  }
+  factory NameModel.fromJson(Map<String, dynamic> json) => _$NameModelFromJson(json);
+  Map<String, dynamic> toJson() => _$NameModelToJson(this);
 }

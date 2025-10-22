@@ -1,5 +1,9 @@
-import '../../core.dart';
 
+import '../../core.dart';
+part 'user_model.g.dart';
+
+
+@JsonSerializable()
 class UserModel {
   final String gender;
   final NameModel name;
@@ -14,6 +18,7 @@ class UserModel {
   final PictureModel picture;
   final String nat;
 
+  
   UserModel({
     required this.gender,
     required this.name,
@@ -29,20 +34,7 @@ class UserModel {
     required this.nat,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      gender: json['gender'],
-      name: NameModel.fromJson(json['name']),
-      location: LocationModel.fromJson(json['location']),
-      email: json['email'],
-      login: LoginModel.fromJson(json['login']),
-      dob: DobModel.fromJson(json['dob']),
-      registered: RegisteredModel.fromJson(json['registered']),
-      phone: json['phone'],
-      cell: json['cell'],
-      id: IdModel.fromJson(json['id']),
-      picture: PictureModel.fromJson(json['picture']),
-      nat: json['nat'],
-    );
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
+  
 }
