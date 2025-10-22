@@ -9,6 +9,8 @@ class AppConstants {
   double get screenHeight => _screenHeight;
   double get screenWidth => _screenWidth;
 
+  String randomUserApiRoute = 'https://randomuser.me/api/';
+
   set screenHeight(double value) {
     if (screenHeight == value) return;
     _screenHeight = value;

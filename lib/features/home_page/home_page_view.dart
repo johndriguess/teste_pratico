@@ -6,14 +6,20 @@ class HomePageView extends HomePageViewModel{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: Text('Usuários (${userList.length})'),
       ),
-      body: Center(
-        child: Text(
-          'Screen Width: ${AppConstants.instance.screenWidth}\n'
-          'Screen Height: ${AppConstants.instance.screenHeight}',
-          textAlign: TextAlign.center,
-        ),
+      body: ListView.builder(
+        itemCount: userList.length,
+        itemBuilder: (context, index) {
+          final user = userList[index];
+          return ListTile(
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(user.picture.thumbnail),
+            ),
+            title: Text('${user.name.first} ${user.name.last}'),
+            subtitle: Text(user.email),
+          );
+        },
       ),
     );
   }

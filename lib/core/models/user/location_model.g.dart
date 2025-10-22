@@ -12,7 +12,7 @@ LocationModel _$LocationModelFromJson(Map<String, dynamic> json) =>
       city: json['city'] as String,
       state: json['state'] as String,
       country: json['country'] as String,
-      postcode: json['postcode'] as String,
+      postcode: _postcodeToString(json['postcode']),
       coordinates: CoordinatesModel.fromJson(
         json['coordinates'] as Map<String, dynamic>,
       ),

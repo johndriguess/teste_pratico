@@ -7,6 +7,7 @@ class LocationModel {
   final String city;
   final String state;
   final String country;
+  @JsonKey(fromJson: _postcodeToString)
   final String postcode; 
   final CoordinatesModel coordinates;
   final TimezoneModel timezone;
@@ -16,6 +17,7 @@ class LocationModel {
     required this.city,
     required this.state,
     required this.country,
+    
     required this.postcode,
     required this.coordinates,
     required this.timezone,
@@ -56,4 +58,10 @@ class TimezoneModel {
 
   factory TimezoneModel.fromJson(Map<String, dynamic> json) => _$TimezoneModelFromJson(json);
   Map<String, dynamic> toJson() => _$TimezoneModelToJson(this);
+}
+
+//Api as vezes retornava o código postal como int e as vezes String, essa função serve para prever essa situação e contorna-la
+String _postcodeToString(dynamic postcode) {
+  log(postcode.runtimeType.toString());
+  return postcode.toString();
 }

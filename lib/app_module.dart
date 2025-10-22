@@ -7,7 +7,9 @@ class AppModule extends Module {
     super.binds(i);
     i
       ..addSingleton<StorageManager>(() => StorageManager.instance)
-      ..addSingleton<NavigatorManager>(() => NavigatorManager.instance);
+      ..addSingleton<NavigatorManager>(() => NavigatorManager.instance)
+      
+      ..addSingleton<UserRepository>(() => UserRepository.instance);
   }
 
   @override
