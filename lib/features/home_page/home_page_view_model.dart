@@ -38,7 +38,8 @@ abstract class HomePageViewModel extends State<HomePage> with SingleTickerProvid
       if (mounted) {
         setState(() {
           userList.add(user);
-          log('User: ${user.name.first}');
+          //log para debug
+          //log('User: ${user.name.first}');
         });
       }
     } catch (e, s) {

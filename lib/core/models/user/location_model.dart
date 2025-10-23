@@ -62,6 +62,7 @@ class TimezoneModel {
 
 //Api as vezes retornava o código postal como int e as vezes String, essa função serve para prever essa situação e contorna-la
 String _postcodeToString(dynamic postcode) {
-  log(postcode.runtimeType.toString());
+  //log para debug
+  //log(postcode.runtimeType.toString());
   return postcode.toString();
 }

@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFFF6F7F8)
+      ),
     );
   }
 }

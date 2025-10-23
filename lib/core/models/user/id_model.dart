@@ -4,6 +4,7 @@ part 'id_model.g.dart';
 @JsonSerializable()
 class IdModel {
   final String name;
+  //Api retornava value == Null as vezes, sendo assim declarei a variavel como nullable
   final String? value;
 
   IdModel({

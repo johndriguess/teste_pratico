@@ -4,22 +4,28 @@ import 'home_page_view_model.dart';
 class HomePageView extends HomePageViewModel{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Usuários (${userList.length})'),
-      ),
-      body: ListView.builder(
-        itemCount: userList.length,
-        itemBuilder: (context, index) {
-          final user = userList[index];
-          return ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(user.picture.thumbnail),
-            ),
-            title: Text('${user.name.first} ${user.name.last}'),
-            subtitle: Text(user.email),
-          );
-        },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Usuários (${userList.length})'),
+        ),
+        body: ListView.builder(
+          itemCount: userList.length,
+          itemBuilder: (context, index) {
+            final user = userList[index];
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: AppConstants.instance.screenHeight * 0.02),
+              child: PersonCard(
+                name: '${user.name.first} ${user.name.last}', 
+                email: user.email, 
+                pictureThumbnail: user.picture.thumbnail, 
+                onTap: () {
+                  
+                }
+              ),
+            );
+          },
+        ),
       ),
     );
   }
