@@ -1,3 +1,4 @@
+import 'package:provider/provider.dart';
 import 'core/core.dart';
 import 'app_widget.dart';
 
@@ -7,5 +8,17 @@ void main() async {
   final storageManager = StorageManager.instance;
   await storageManager.init();
 
-  runApp(ModularApp(module: AppModule(), child: const AppWidget()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(),
+        ),
+      ],
+      child: ModularApp(
+        module: AppModule(), 
+        child: const AppWidget()
+      ),
+    ),
+  );
 }

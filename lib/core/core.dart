@@ -5,6 +5,7 @@ export 'managers/managers.dart';
 export 'models/models.dart';
 export 'repositories/repositories.dart';
 export 'utils/utils.dart';
+export 'providers/providers.dart';
 
 export '../features/features.dart';
 

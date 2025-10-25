@@ -16,6 +16,7 @@ class AppModule extends Module {
   void routes(RouteManager r) {
     super.routes(r);
     r
-      ..child("/", child: (context) => const HomePage());
+      ..child("/", child: (context) => const HomePage())
+      ..child(DetailsPage.route, child: (context) => const DetailsPage());
   }
 }

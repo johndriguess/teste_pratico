@@ -24,15 +24,15 @@ class _AppWidgetState extends State<AppWidget> {
       routerDelegate: Modular.routerDelegate,
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: const Color(0xFFF8FAFC),
-        primarySwatch: Colors.blue,
-        primaryColor: const Color(0xFF667eea),
+        scaffoldBackgroundColor: const Color(0xFFF6F7F8),
+        primarySwatch: Colors.indigo,
+        primaryColor: const Color(0xFF0F2027),
         colorScheme: const ColorScheme.light(
-          primary: Color(0xFF667eea),
-          secondary: Color(0xFF764ba2),
-          surface: Colors.white,
-          onPrimary: Colors.white,
-          onSecondary: Colors.white,
+          primary: Color(0xFF0F2027),
+          secondary: Color(0xFF2C5364),
+          surface: Color(0xFFF6F7F8),
+          onPrimary: Color(0xFFF6F7F8),
+          onSecondary: Color(0xFFF6F7F8),
           onSurface: Color(0xFF1E293B),
         ),
         textTheme: const TextTheme(
@@ -65,8 +65,8 @@ class _AppWidgetState extends State<AppWidget> {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF667eea),
-            foregroundColor: Colors.white,
+            backgroundColor: const Color(0xFF0F2027),
+            foregroundColor: Color(0xFFF6F7F8),
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -75,8 +75,8 @@ class _AppWidgetState extends State<AppWidget> {
           ),
         ),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF667eea),
-          foregroundColor: Colors.white,
+          backgroundColor: Color(0xFF0F2027),
+          foregroundColor: Color(0xFFF6F7F8),
           elevation: 0,
         ),
       ),

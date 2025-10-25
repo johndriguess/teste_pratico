@@ -1,3 +1,5 @@
+import 'package:provider/provider.dart';
+
 import '../../core/core.dart';
 
 abstract class HomePageViewModel extends State<HomePage> with SingleTickerProviderStateMixin{
@@ -46,6 +48,13 @@ abstract class HomePageViewModel extends State<HomePage> with SingleTickerProvid
       log("Erro ao buscar usuário: $e");
       log(s.toString());
     }
+  }
+
+
+  onPersonButtonPressed(UserModel user){
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    userProvider.setSelectedUser(user);
+    NavigatorManager.instance.to(DetailsPage.route);
   }
 
 }
