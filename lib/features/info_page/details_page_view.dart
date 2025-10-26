@@ -1,6 +1,5 @@
 import 'package:teste_pratico/features/info_page/details_page_view_model.dart';
 import '../../core/core.dart';
-import 'package:provider/provider.dart';
 
 class DetailsPageView extends DetailsPageViewModel {
   @override
@@ -33,7 +32,7 @@ class DetailsPageView extends DetailsPageViewModel {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          Theme.of(context).primaryColor.withOpacity(0.1),
+                          Theme.of(context).primaryColor.withValues(alpha: 0.1),
                           Colors.transparent,
                         ],
                       ),
@@ -70,75 +69,116 @@ class DetailsPageView extends DetailsPageViewModel {
                     padding: EdgeInsets.all(w(16)),
                     child: Column(
                       children: [
-                        _buildInfoCard(
-                          context,
-                          w: w,
+                        InfoCard(
                           title: 'Informações Pessoais',
                           icon: Icons.person,
                           children: [
-                            _buildInfoRow(w, 'Gênero', _formatGender(user.gender)),
-                            _buildInfoRow(w, 'Data de Nascimento', _formatDate(user.dob.date)),
-                            _buildInfoRow(w, 'Idade', '${user.dob.age} anos'),
-                            _buildInfoRow(w, 'Nacionalidade', user.nat),
+                            InfoRow(
+                              label: 'Gênero', 
+                              value: formatGender(user.gender)
+                            ),
+                            InfoRow(
+                              label: 'Data de Nascimento', 
+                              value: formatDate(user.dob.date)
+                            ),
+                            InfoRow(
+                              label: 'Idade', 
+                              value:'${user.dob.age} anos'
+                            ),
+                            InfoRow(
+                              label: 'Nacionalidade', 
+                              value: user.nat
+                            ),
                           ],
                         ),
                         Gap(w(16)),
-                        _buildInfoCard(
-                          context,
-                          w: w,
+                        InfoCard(
                           title: 'Endereço',
                           icon: Icons.location_on,
                           children: [
-                            _buildInfoRow(w, 'Rua', '${user.location.street.number} ${user.location.street.name}'),
-                            _buildInfoRow(w, 'Cidade', user.location.city),
-                            _buildInfoRow(w, 'Estado', user.location.state),
-                            _buildInfoRow(w, 'País', user.location.country),
-                            _buildInfoRow(w, 'CEP', user.location.postcode.toString()),
-                            _buildInfoRow(w, 'Coordenadas', '${user.location.coordinates.latitude}, ${user.location.coordinates.longitude}'),
-                            _buildInfoRow(w, 'Fuso Horário', '${user.location.timezone.offset} - ${user.location.timezone.description}'),
+                            InfoRow(
+                              label: 'Rua', 
+                              value: '${user.location.street.number} ${user.location.street.name}'
+                            ),
+                            InfoRow(
+                              label: 'Cidade', 
+                              value: user.location.city
+                            ),
+                            InfoRow(
+                              label:'Estado', 
+                              value: user.location.state
+                            ),
+                            InfoRow(
+                              label: 'País', 
+                              value: user.location.country
+                            ),
+                            InfoRow(
+                              label: 'CEP', 
+                              value: user.location.postcode.toString()
+                            ),
+                            InfoRow(
+                              label: 'Coordenadas', 
+                              value: '${user.location.coordinates.latitude}, ${user.location.coordinates.longitude}'
+                            ),
+                            InfoRow(
+                              label: 'Fuso Horário', 
+                              value: '${user.location.timezone.offset} - ${user.location.timezone.description}'
+                            ),
                           ],
                         ),
                         Gap(w(16)),
-                        _buildInfoCard(
-                          context,
-                          w: w,
+                        InfoCard(
                           title: 'Contato',
                           icon: Icons.phone,
                           children: [
-                            _buildInfoRow(w, 'Telefone', user.phone),
-                            _buildInfoRow(w, 'Celular', user.cell),
+                            InfoRow(
+                              label: 'Telefone', 
+                              value: user.phone
+                            ),
+                            InfoRow(
+                              label: 'Celular', 
+                              value: user.cell
+                            ),
                           ],
                         ),
                         Gap(w(16)),
-                        _buildInfoCard(
-                          context,
-                          w: w,
+                        InfoCard(
                           title: 'Login',
                           icon: Icons.lock,
                           children: [
-                            _buildInfoRow(w, 'Username', user.login.username),
-                            _buildInfoRow(w, 'UUID', user.login.uuid),
+                            InfoRow( 
+                              label: 'Username', 
+                              value: user.login.username
+                            ),
+                            InfoRow(
+                              label: 'UUID', 
+                              value: user.login.uuid
+                            ),
                           ],
                         ),
                         Gap(w(16)),
-                        _buildInfoCard(
-                          context,
-                          w: w,
+                        InfoCard(
                           title: 'Identificação',
                           icon: Icons.badge,
                           children: [
-                            _buildInfoRow(w, user.id.name, user.id.value ?? "Não Informado"),
+                            InfoRow(
+                              label: user.id.name, 
+                              value: user.id.value ?? "Não Informado"),
                           ],
                         ),
                         Gap(w(16)),
-                        _buildInfoCard(
-                          context,
-                          w: w,
+                        InfoCard(
                           title: 'Registro',
                           icon: Icons.calendar_today,
                           children: [
-                            _buildInfoRow(w, 'Data de Registro', _formatDate(user.registered.date)),
-                            _buildInfoRow(w, 'Tempo de Registro', '${user.registered.age} anos'),
+                            InfoRow(
+                              label: 'Data de Registro', 
+                              value: formatDate(user.registered.date)
+                            ),
+                            InfoRow(
+                              label: 'Tempo de Registro', 
+                              value: '${user.registered.age} anos'
+                            ),
                           ],
                         ),
                       ],
@@ -153,86 +193,5 @@ class DetailsPageView extends DetailsPageViewModel {
     );
   }
 
-  Widget _buildInfoCard(
-    BuildContext context, {
-    required double Function(double) w,
-    required String title,
-    required IconData icon,
-    required List<Widget> children,
-  }) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(w(12)),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(w(16)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(
-                  icon,
-                  size: w(20),
-                  color: Theme.of(context).primaryColor,
-                ),
-                Gap(w(8)),
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: w(16),
-                  ),
-                ),
-              ],
-            ),
-            Divider(height: w(24)),
-            ...children,
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _buildInfoRow(double Function(double) w, String label, String value) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: w(12)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 2,
-            child: Text(
-              label,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Colors.grey,
-                fontSize: w(13),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Text(
-              value,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: w(13),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  String _formatGender(String gender) {
-    return gender == 'male' ? 'Masculino' : 'Feminino';
-  }
-
-  String _formatDate(String dateString) {
-    final date = DateTime.parse(dateString);
-    return '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
-  }
 }

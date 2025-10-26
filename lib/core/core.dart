@@ -16,3 +16,4 @@ export 'dart:io';
 export 'dart:convert';
 export 'dart:developer' hide Flow;
 export 'package:gap/gap.dart';
+export 'package:provider/provider.dart';

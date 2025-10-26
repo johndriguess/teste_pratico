@@ -1,5 +1,3 @@
-import 'package:provider/provider.dart';
-
 import '../../core/core.dart';
 
 abstract class HomePageViewModel extends State<HomePage> with SingleTickerProviderStateMixin{

@@ -11,5 +11,14 @@ abstract class DetailsPageViewModel extends State<DetailsPage>{
     super.dispose();
   }
 
+  String formatGender(String gender) {
+    return gender == 'male' ? 'Masculino' : 'Feminino';
+  }
+
+  String formatDate(String dateString) {
+    final date = DateTime.parse(dateString);
+    return '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
+  }
+
   
 }

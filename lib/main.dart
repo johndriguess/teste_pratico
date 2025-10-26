@@ -1,4 +1,3 @@
-import 'package:provider/provider.dart';
 import 'core/core.dart';
 import 'app_widget.dart';
 
