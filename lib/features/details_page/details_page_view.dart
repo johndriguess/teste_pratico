@@ -22,6 +22,23 @@ class DetailsPageView extends DetailsPageViewModel {
               title: const Text('Detalhes do Usuário'),
               elevation: 0,
             ),
+            floatingActionButton: FloatingActionButton.extended(
+              onPressed: toggleSaveUser,
+              backgroundColor: isSaved 
+                ? Colors.red 
+                : const Color(0xFF2C5364),
+              icon: Icon(
+                isSaved ? Icons.delete_rounded : Icons.save_rounded,
+                color: Colors.white,
+              ),
+              label: Text(
+                isSaved ? 'Remover' : 'Salvar',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -40,9 +57,33 @@ class DetailsPageView extends DetailsPageViewModel {
                     child: Column(
                       children: [
                         Gap(w(24)),
-                        CircleAvatar(
-                          radius: w(60),
-                          backgroundImage: NetworkImage(user.picture.large),
+                        Stack(
+                          children: [
+                            CircleAvatar(
+                              radius: w(60),
+                              backgroundImage: NetworkImage(user.picture.large),
+                            ),
+                            Positioned(
+                              right: 0,
+                              bottom: 0,
+                              child: Container(
+                                padding: EdgeInsets.all(w(6)),
+                                decoration: BoxDecoration(
+                                  color: isSaved ? Colors.green : Colors.grey,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: Icon(
+                                  isSaved ? Icons.bookmark : Icons.bookmark_border,
+                                  color: Colors.white,
+                                  size: w(16),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         Gap(w(16)),
                         Text(
@@ -163,7 +204,8 @@ class DetailsPageView extends DetailsPageViewModel {
                           children: [
                             InfoRow(
                               label: user.id.name, 
-                              value: user.id.value ?? "Não Informado"),
+                              value: user.id.value ?? "Não Informado"
+                            ),
                           ],
                         ),
                         Gap(w(16)),
@@ -181,6 +223,7 @@ class DetailsPageView extends DetailsPageViewModel {
                             ),
                           ],
                         ),
+                        Gap(w(80)), 
                       ],
                     ),
                   ),
@@ -192,6 +235,4 @@ class DetailsPageView extends DetailsPageViewModel {
       },
     );
   }
-
-
 }
