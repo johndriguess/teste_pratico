@@ -1,4 +1,4 @@
-import 'package:teste_pratico/features/info_page/details_page_view_model.dart';
+import 'package:teste_pratico/features/details_page/details_page_view_model.dart';
 import '../../core/core.dart';
 
 class DetailsPageView extends DetailsPageViewModel {

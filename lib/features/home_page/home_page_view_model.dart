@@ -4,6 +4,8 @@ abstract class HomePageViewModel extends State<HomePage> with SingleTickerProvid
   List<UserModel> userList = [];
 
   final _userRepository = UserRepository.instance;
+  final _storageManager = StorageManager.instance;
+  final _navigatorManager = NavigatorManager.instance;
   late final AnimationController _tickerController;
 
   @override
@@ -35,6 +37,9 @@ abstract class HomePageViewModel extends State<HomePage> with SingleTickerProvid
   Future<void> _fetchAndAddUser() async {
     try {
       final user = await _userRepository.fetchRandomUser();
+      
+      await _storageManager.saveUser(user);
+
       if (mounted) {
         setState(() {
           userList.add(user);
@@ -43,7 +48,7 @@ abstract class HomePageViewModel extends State<HomePage> with SingleTickerProvid
         });
       }
     } catch (e, s) {
-      log("Erro ao buscar usuário: $e");
+      log("Erro: $e");
       log(s.toString());
     }
   }
@@ -52,7 +57,14 @@ abstract class HomePageViewModel extends State<HomePage> with SingleTickerProvid
   onPersonButtonPressed(UserModel user){
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     userProvider.setSelectedUser(user);
-    NavigatorManager.instance.to(DetailsPage.route);
+    _navigatorManager.to(DetailsPage.route);
   }
+
+  onDatabaseButtonPressed(){
+    
+    _navigatorManager.to(PersistedUsersPage.route);
+  }
+
+
 
 }

@@ -22,7 +22,7 @@ class StorageManager {
     return _userBox.containsKey(userUuid);
   }
 
-  void listenToUsers(void Function() listener) {
-    _userBox.listenable().addListener(listener);
+  Listenable getUsersListenable() {
+    return _userBox.listenable();
   }
 }

@@ -62,6 +62,20 @@ class HomePageView extends HomePageViewModel{
                           ],
                         ),
                       ),
+                      // Adicione este botão
+                      IconButton(
+                        icon: Icon(
+                          Icons.storage_rounded, // ou Icons.database
+                          color: Colors.white,
+                          size: w(28),
+                        ),
+                        onPressed: onDatabaseButtonPressed,
+                        tooltip: 'Usuários Persistidos',
+                        style: IconButton.styleFrom(
+                          backgroundColor: Colors.white.withValues(alpha: 0.15),
+                          padding: EdgeInsets.all(w(12)),
+                        ),
+                      ),
                     ],
                   ),
                 ],

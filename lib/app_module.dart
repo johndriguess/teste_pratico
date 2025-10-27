@@ -7,6 +7,7 @@ class AppModule extends Module {
     super.binds(i);
     i
       ..addSingleton<NavigatorManager>(() => NavigatorManager.instance)
+      ..addSingleton<StorageManager>(() => StorageManager.instance)
       
       ..addSingleton<UserRepository>(() => UserRepository.instance);
   }
@@ -16,6 +17,7 @@ class AppModule extends Module {
     super.routes(r);
     r
       ..child("/", child: (context) => const HomePage())
-      ..child(DetailsPage.route, child: (context) => const DetailsPage());
+      ..child(DetailsPage.route, child: (context) => const DetailsPage())
+      ..child(PersistedUsersPage.route, child: (context) => const PersistedUsersPage());
   }
 }
