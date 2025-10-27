@@ -25,7 +25,7 @@ abstract class DetailsPageViewModel extends State<DetailsPage>{
     }
   }
 
-  //FIXME: Não sei se faz sentido fazer isso, visto que n o documento ficou ambiguo, mas implementei a funcionalidade de salvar/remover usuário dos salvos na página de detalhes. Na minha análise só vai haver o comportamento de excluir o usuário.
+  //FIXME: Não sei se faz sentido fazer isso, visto que n o documento ficou ambiguo, mas implementei a funcionalidade de salvar/remover usuário dos salvos na página de detalhes. Na minha análise só vai haver o comportamento de excluir o usuário (Fiz de um jeito para fazer sentido a existência de salvar no fluxo).
   Future<void> toggleSaveUser() async {
     final user = Provider.of<UserProvider>(context, listen: false).selectedUser;
     if (user == null) return;
