@@ -4,8 +4,20 @@ import 'app_widget.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final storageManager = StorageManager.instance;
-  await storageManager.init();
+  await Hive.initFlutter();
+  Hive.registerAdapter(UserModelAdapter());
+  Hive.registerAdapter(NameModelAdapter());
+  Hive.registerAdapter(LocationModelAdapter());
+  Hive.registerAdapter(StreetModelAdapter());
+  Hive.registerAdapter(CoordinatesModelAdapter());
+  Hive.registerAdapter(TimezoneModelAdapter());
+  Hive.registerAdapter(DobModelAdapter());
+  Hive.registerAdapter(LoginModelAdapter());
+  Hive.registerAdapter(IdModelAdapter());
+  Hive.registerAdapter(PictureModelAdapter());
+  Hive.registerAdapter(RegisteredModelAdapter());
+  
+  await Hive.openBox<UserModel>('users');
 
   runApp(
     MultiProvider(

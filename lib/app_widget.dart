@@ -11,9 +11,6 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Modular.get<StorageManager>().init();
-    });
   }
 
   @override

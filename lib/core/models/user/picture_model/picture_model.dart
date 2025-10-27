@@ -1,10 +1,14 @@
-import '../../core.dart';
+import '../../../core.dart';
 part 'picture_model.g.dart';
 
+@HiveType(typeId: 7)
 @JsonSerializable()
 class PictureModel {
+  @HiveField(0)
   final String large;
+  @HiveField(1)
   final String medium;
+  @HiveField(2)
   final String thumbnail;
 
   PictureModel({

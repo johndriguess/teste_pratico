@@ -17,3 +17,5 @@ export 'dart:convert';
 export 'dart:developer' hide Flow;
 export 'package:gap/gap.dart';
 export 'package:provider/provider.dart';
+export 'package:hive/hive.dart';
+export 'package:hive_flutter/hive_flutter.dart';

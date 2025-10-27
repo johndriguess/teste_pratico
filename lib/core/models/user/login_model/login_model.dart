@@ -1,14 +1,22 @@
-import '../../core.dart';
+import '../../../core.dart';
 part 'login_model.g.dart';
 
+@HiveType(typeId: 5)
 @JsonSerializable()
 class LoginModel {
+  @HiveField(0)
   final String uuid;
+  @HiveField(1)
   final String username;
+  @HiveField(2)
   final String password;
+  @HiveField(3)
   final String salt;
+  @HiveField(4)
   final String md5;
+  @HiveField(5)
   final String sha1;
+  @HiveField(6)
   final String sha256;
 
   LoginModel({

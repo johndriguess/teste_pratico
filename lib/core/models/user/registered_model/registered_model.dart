@@ -1,9 +1,12 @@
-import '../../core.dart';
+import '../../../core.dart';
 part 'registered_model.g.dart';
 
+@HiveType(typeId: 8)
 @JsonSerializable()
 class RegisteredModel {
+  @HiveField(0)
   final String date;
+  @HiveField(1)
   final int age;
 
   RegisteredModel({

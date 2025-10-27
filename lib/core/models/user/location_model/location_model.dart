@@ -1,15 +1,23 @@
-import '../../core.dart';
+import '../../../core.dart';
 part 'location_model.g.dart';
 
+@HiveType(typeId: 4)
 @JsonSerializable()
 class LocationModel {
+  @HiveField(0)
   final StreetModel street;
+  @HiveField(1)
   final String city;
+  @HiveField(2)
   final String state;
+  @HiveField(3)
   final String country;
+  @HiveField(4)
   @JsonKey(fromJson: _postcodeToString)
   final String postcode; 
+  @HiveField(5)
   final CoordinatesModel coordinates;
+  @HiveField(6)
   final TimezoneModel timezone;
 
   LocationModel({
@@ -27,9 +35,12 @@ class LocationModel {
   Map<String, dynamic> toJson() => _$LocationModelToJson(this);
 }
 
+@HiveType(typeId: 9)
 @JsonSerializable()
 class StreetModel {
+  @HiveField(0)
   final int number;
+  @HiveField(1)
   final String name;
 
   StreetModel({required this.number, required this.name});
@@ -38,9 +49,12 @@ class StreetModel {
   Map<String, dynamic> toJson() => _$StreetModelToJson(this);
 }
 
+@HiveType(typeId: 1)
 @JsonSerializable()
 class CoordinatesModel {
+  @HiveField(0)
   final String latitude;
+  @HiveField(1)
   final String longitude;
 
   CoordinatesModel({required this.latitude, required this.longitude});
@@ -49,9 +63,12 @@ class CoordinatesModel {
   Map<String, dynamic> toJson() => _$CoordinatesModelToJson(this);
 }
 
+@HiveType(typeId: 10)
 @JsonSerializable()
 class TimezoneModel {
+  @HiveField(0)
   final String offset;
+  @HiveField(1)
   final String description;
 
   TimezoneModel({required this.offset, required this.description});

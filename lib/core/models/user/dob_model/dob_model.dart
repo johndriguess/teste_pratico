@@ -1,9 +1,14 @@
-import '../../core.dart';
+
+
+import '../../../core.dart';
 part 'dob_model.g.dart';
 
+@HiveType(typeId: 2)
 @JsonSerializable()
 class DobModel {
+  @HiveField(0)
   final String date;
+  @HiveField(1)
   final int age;
 
   DobModel({

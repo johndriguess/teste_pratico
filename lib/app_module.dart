@@ -6,7 +6,6 @@ class AppModule extends Module {
   void binds(Injector i){
     super.binds(i);
     i
-      ..addSingleton<StorageManager>(() => StorageManager.instance)
       ..addSingleton<NavigatorManager>(() => NavigatorManager.instance)
       
       ..addSingleton<UserRepository>(() => UserRepository.instance);
